@@ -8,12 +8,14 @@ g.maplocalleader = " "
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
+-- virtual environments settings for ruby, node and perl
 g.loaded_ruby_provider = 0
-g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
 
 -- require settings according to the OS
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
+
 if binaryformat == "dll" then
 	require("config.os_windows")
     function os.name()
