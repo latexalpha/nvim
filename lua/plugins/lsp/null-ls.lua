@@ -6,6 +6,19 @@ return {
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         local null_ls = require("null-ls")
 
+        local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
+
+        if binaryformat == "dll" then
+            Sources = {
+                null_ls.builtins.formatting.black, -- formatting for python
+                null_ls.builtins.formatting.latexindent, -- formatting for latex
+            }
+        else
+            Sources = {
+                null_ls.builtins.formatting.black, -- formatting for python
+            }
+        end
+
         null_ls.setup({
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
@@ -20,10 +33,8 @@ return {
                     })
                 end
             end,
-            sources = {
-                null_ls.builtins.formatting.black, -- formatting for python
-                null_ls.builtins.formatting.latexindent, -- formatting for latex
-            },
+            sources = Sources,
+
         })
     end
 }

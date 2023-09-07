@@ -99,9 +99,28 @@ return{
                 "MasonUninstallAll",
             },
             dependencies = "williamboman/mason-lspconfig.nvim",
+
             config = function()
                 local mason = require("mason")
                 local mason_lspconfig = require("mason-lspconfig")
+
+                local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
+
+                if binaryformat == "dll" then
+                    Ensure_installed = {
+                        -- ensured installed language servers
+                        "lua_ls", -- lua
+                        "texlab", -- latex
+                        "pyright", -- python
+                    }
+                else
+                    Ensure_installed = {
+                        -- ensured installed language servers
+                        "lua_ls", -- lua
+                        "pyright", -- python
+                    }
+                end
+
                 mason.setup {
                     ui = {
                         -- Whether to automatically check for new versions when opening the :Mason window.
@@ -115,12 +134,7 @@ return{
                     },
                 }
                 mason_lspconfig.setup {
-                    ensure_installed = {
-                        -- ensured installed language servers
-                        "lua_ls", -- lua
-                        "texlab", -- latex
-                        "pyright", -- python
-                    }
+                    ensure_installed = Ensure_installed,
                 }
             end,
         },
