@@ -5,7 +5,9 @@ if binaryformat == "dll" then
     return {
         "lervag/vimtex",
     }
+else
+    return {
+    -- return nothing
+    }
 end
-binaryformat = nil
-
 
