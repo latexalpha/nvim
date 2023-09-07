@@ -3,6 +3,13 @@ local g = vim.g
 -- set the Nvim Global python virtual environment
 g.python3_host_prog = "C:/Users/heihi/miniconda3/python"
 
+-- use lazy.nvim to manage plugins
+require("lazy").setup({
+    spec = {
+        { import = "plugins.wondows" },
+    }
+})
+
 -- -------------------VimTeX settings-------------------
 g.tex_flavor = 'latex'
 g.vimtex_compiler_method = 'latexmk'
