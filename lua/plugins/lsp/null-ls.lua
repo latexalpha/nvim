@@ -7,7 +7,6 @@ return {
         local null_ls = require("null-ls")
 
         local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
-
         if binaryformat == "dll" then
             Sources = {
                 null_ls.builtins.formatting.black, -- formatting for python
@@ -17,7 +16,9 @@ return {
             Sources = {
                 null_ls.builtins.formatting.black, -- formatting for python
             }
+
         end
+        binaryformat = nil
 
         null_ls.setup({
             on_attach = function(client, bufnr)
@@ -34,7 +35,6 @@ return {
                 end
             end,
             sources = Sources,
-
         })
     end
 }

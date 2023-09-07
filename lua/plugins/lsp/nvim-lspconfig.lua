@@ -99,13 +99,11 @@ return{
                 "MasonUninstallAll",
             },
             dependencies = "williamboman/mason-lspconfig.nvim",
-
             config = function()
                 local mason = require("mason")
                 local mason_lspconfig = require("mason-lspconfig")
 
                 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
-
                 if binaryformat == "dll" then
                     Ensure_installed = {
                         -- ensured installed language servers
@@ -120,6 +118,7 @@ return{
                         "pyright", -- python
                     }
                 end
+                binaryformat = nil
 
                 mason.setup {
                     ui = {
