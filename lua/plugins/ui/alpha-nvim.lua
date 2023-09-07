@@ -19,7 +19,6 @@ return {
         dashboard.button("<leader>fo", " " .. " Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button("<leader>fg", " " .. " Find text", ":Telescope live_grep <CR>"),
         dashboard.button("<leader>cf", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("<leader>rs", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
         dashboard.button("<leader>l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("<leader>q", " " .. " Quit", ":qa<CR>"),
         }
