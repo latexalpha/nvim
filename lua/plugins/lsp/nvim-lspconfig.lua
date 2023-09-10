@@ -71,6 +71,7 @@ return{
                 python = {
                     analysis = {
                         typeCheckingMode = "off",
+                        diagnosticMode = "off",
                         useLibraryCodeForTypes = true,
                     },
                 },
