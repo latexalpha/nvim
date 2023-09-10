@@ -67,11 +67,19 @@ return{
         -- language server for python with pyright and ruff_lsp
         lspconfig.pyright.setup{
             on_attach = on_attach,
+            capabilities = (function()
+                local capabilities = vim.lsp.protocol.make_client_capabilities()
+                    capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+                return capabilities
+            end)(),
             settings = {
                 python = {
                     analysis = {
                         typeCheckingMode = "off",
                         diagnosticMode = "off",
+                        diagnosticSeverityOverrides = {
+                            reportUnusedVariable = "warning", -- or anything
+                        },
                         useLibraryCodeForTypes = true,
                     },
                 },
