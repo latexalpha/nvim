@@ -2,10 +2,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
-    cmd = "NvimTreeToggle",
-    keys = {
-        {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "NvimTreeToggle" },
-    },
 
     dependencies = {
         {
