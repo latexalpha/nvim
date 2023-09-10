@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- copilot 
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+-- lsp_lines
+map("","<Leader>lh", require("lsp_lines").toggle, { desc = "Toggle lsp_lines help" })
