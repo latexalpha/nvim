@@ -15,12 +15,12 @@ g.loaded_node_provider = 0
 -- require settings according to the OS
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
-	require("config.os_windows")
+	require("core.os_windows")
     function os.name()
         return "windows"
     end
 elseif binaryformat == "so" then
-	require("config.os_linux")
+	require("core.os_linux")
     function os.name()
         return "linux"
     end
@@ -28,4 +28,4 @@ end
 binaryformat = nil
 
 -- bootstrap lazy.nvim
-require("config.lazy")
+require("core.lazy")

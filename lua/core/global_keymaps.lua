@@ -12,6 +12,7 @@ map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer. "}) -- set :w keyma
 map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer "}) -- set :q keymap
 map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit "}) -- set :wq keymap
 map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight "}) -- set no highlight keymap
+map("", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
 
 map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. "}) -- represents diagnostic open_float
 map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Move to the previous diagnostic in the current buffer "}) -- represents diagnostic goto_prev
