@@ -26,5 +26,5 @@ require("lazy").setup({
 vim.cmd.colorscheme "catppuccin"
 
 -- personal specs
-require("core.global_keymaps")
-require("core.global_options")
+require("core.keymaps")
+require("core.options")
