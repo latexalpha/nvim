@@ -27,19 +27,19 @@ return {
 
                     -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
                     program = "${file}", -- This configuration will launch the current file if used.
-                    -- pythonPath = "C:/Users/heihi/miniconda3/envs/torch20/python.exe"
-                    pythonPath = function()
-                        local is_windows = function()
-                            return vim.loop.os_uname().sysname:find("Windows", 1, true) and true
-                        end
-                        local venv_path = os.getenv("CONDA_PREFIX")
-                        if venv_path then
-                            if is_windows() then
-                                return venv_path .. '\\python.exe'
-                            end
-                            return venv_path .. '/bin/python'
-                        end
-                    end
+                    -- -- pythonPath = "C:/Users/heihi/miniconda3/envs/torch20/python.exe"
+                    -- pythonPath = function()
+                    --     local is_windows = function()
+                    --         return vim.loop.os_uname().sysname:find("Windows", 1, true) and true
+                    --     end
+                    --     local venv_path = os.getenv("CONDA_PREFIX")
+                    --     if venv_path then
+                    --         if is_windows() then
+                    --             return venv_path .. '\\python.exe'
+                    --         end
+                    --         return venv_path .. '/bin/python'
+                    --     end
+                    -- end
                 },
             }
         end
