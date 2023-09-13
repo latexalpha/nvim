@@ -7,7 +7,14 @@ return {-- noicer ui
             "MunifTanjim/nui.nvim",
             lazy = true,
         },
-        { "rcarriga/nvim-notify" },
+        {
+            "rcarriga/nvim-notify",
+            config = function ()
+                require("notify").setup({
+                    background_colour = "#1e1e2e",
+                })
+            end
+        },
     },
 
     opts = {
