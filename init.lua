@@ -13,25 +13,10 @@ g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
 
 -- require settings according to the OS
--- local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
--- if binaryformat == "dll" then
--- 	require("core.os_windows")
---     function os.name()
---         return "windows"
---     end
--- elseif binaryformat == "so" then
--- 	require("core.os_linux")
---     function os.name()
---         return "linux"
---     end
--- end
--- binaryformat = nil
---
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
 
     g.python3_host_prog = "C:/Users/heihi/miniconda3/python"
-
     -- set the Nvim python virtual environment
     vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
@@ -48,7 +33,6 @@ if binaryformat == "dll" then
 elseif binaryformat == "so" then
 
     g.python3_host_prog = "/home/shangyu/miniconda3/bin/python"
-
     -- set the Nvim python virtual environment
     vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
