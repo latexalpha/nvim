@@ -27,7 +27,7 @@ if binaryformat == "dll" then
     g.tex_flavor = 'latex'
     g.vimtex_compiler_method = 'latexmk'
     g.vimtex_indent_bib_enabled = true
-    g.vimtex_format_enabled = true
+    g.vimtex_format_enabled = false
     -- g.vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
     --
 elseif binaryformat == "so" then
