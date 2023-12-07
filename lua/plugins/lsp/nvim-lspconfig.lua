@@ -18,7 +18,7 @@ return{
         -- after the language server attaches to the current buffer
         local on_attach = function(client, bufnr)
 
-            local rc = client.resolved_capabilities
+            local rc = client.server_capabilities
 
             if client.name == 'pyright' then
                 rc.hover = false
@@ -28,9 +28,6 @@ return{
                 rc.rename = false
                 rc.signature_help = false
             end
-
-            --LSP signature
-            require('lsp_signature').on_attach()
 
             local bufopts = { noremap=true, silent=true, buffer=bufnr }
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
