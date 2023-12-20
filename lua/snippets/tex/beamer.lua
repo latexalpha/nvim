@@ -161,7 +161,7 @@ return {
                         % \tableofcontents
                     % \end{frame}
 
-                    \section[Section short title]{Section formal title} \label{section-1}
+                    \section[Section short title]{Section formal title} \label{section: <>}
 
                     \begin{frame}{frame title}
                         <>
