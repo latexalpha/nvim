@@ -161,13 +161,13 @@ return {
                         % \tableofcontents
                     % \end{frame}
 
-                    \section[Section short title]{Section formal title} \label{section-1}
+                    \section[Section short title]{Section formal title}
 
                     \begin{frame}{frame title}
                         <>
                     \end{frame}
 
-                    \section{Reference} \label{section-ref}
+                    \section{Reference}
                     \begin{frame}{参考文献}
                         \printbibliography
                     \end{frame}
