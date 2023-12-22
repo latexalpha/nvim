@@ -14,12 +14,32 @@ vim.opt.rtp:prepend(lazypath)
 
 -- use lazy.nvim to manage plugins
 require("lazy").setup({
+    -- importing directories
     spec = {
         { import = "plugins" },
         { import = "plugins.coding" },
         { import = "plugins.lsp" },
         { import = "plugins.ui" },
-    }
+    },
+
+    -- ui config
+    ui = {
+        border = "double",
+        size = {
+            width = 0.8,
+            height = 0.8,
+        },
+    },
+
+    -- check updated
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+
+    change_detection = {
+        notify = false,
+    },
 })
 
 -- colorscheme
