@@ -32,7 +32,7 @@ return {
             [[
                 \begin{equation}
                     <>
-                    \label{equation: <>}
+                    % \label{equation: <>}
                 \end{equation}
             ]],
             {
@@ -50,7 +50,7 @@ return {
             [[
                 \begin{equation*}
                     <>
-                    \label{equation: <>}
+                    % \label{equation: <>}
                 \end{equation*}
             ]],
             {
@@ -70,7 +70,7 @@ return {
                     \centering
                     \includegraphics[width=0.<>\textwidth]{./figures/figure-<>.png}
                     \caption{<>}
-                    \label{figure: <>}
+                    % \label{figure: <>}
                 \end{figure}
             ]],
             {
@@ -92,7 +92,7 @@ return {
                     \caption{<>}
                     \centering
                     <>
-                    \label{table: <>}
+                    % \label{table: <>}
                 \end{table}
             ]],
             {
@@ -156,7 +156,7 @@ return {
         },
         fmta(
             [[
-                \part{<>} \label{part: <>}
+                \part{<>} % \label{part: <>}
             ]],
             {
                 i(1),
@@ -171,7 +171,7 @@ return {
         },
         fmta(
             [[
-                \chapter{<>} \label{chapter: <>}
+                \chapter{<>} % \label{chapter: <>}
             ]],
             {
                 i(1),
@@ -186,7 +186,7 @@ return {
         },
         fmta(
             [[
-                \section{<>} \label{section: <>}
+                \section{<>} % \label{section: <>}
             ]],
             {
                 i(1),
@@ -201,7 +201,7 @@ return {
         },
         fmta(
             [[
-                \subsection{<>} \label{subsection: <>}
+                \subsection{<>} % \label{subsection: <>}
             ]],
             {
                 i(1),
@@ -216,7 +216,7 @@ return {
         },
         fmta(
             [[
-                \subsubsection{<>} \label{subsubsection: <>}
+                \subsubsection{<>} % \label{subsubsection: <>}
             ]],
             {
                 i(1),

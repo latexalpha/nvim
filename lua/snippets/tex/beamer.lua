@@ -167,7 +167,6 @@ return {
                         <>
                     \end{frame}
 
-                    \section{Reference}
                     \begin{frame}{参考文献}
                         \printbibliography
                     \end{frame}
