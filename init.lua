@@ -16,6 +16,12 @@ g.loaded_node_provider = 0
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
 
+    if vim.g.vscode then
+        -- VSCode extension
+    else
+        -- ordinary Neovim
+    end
+
     g.python3_host_prog = "C:/Users/heihi/miniconda3/python"
     -- set the Nvim python virtual environment
     vim.cmd([[
