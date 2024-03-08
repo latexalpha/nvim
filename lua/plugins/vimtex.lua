@@ -3,9 +3,9 @@
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 
 if binaryformat == "dll" then
-    return {
-        "lervag/vimtex",
-    }
+	return {
+		"lervag/vimtex",
+	}
 else
-    return {}
+	return {}
 end
