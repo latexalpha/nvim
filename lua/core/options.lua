@@ -20,8 +20,3 @@ opt.signcolumn = "yes"
 opt.list = true -- lists
 opt.listchars:append("space:⋅")
 opt.listchars:append("eol:↴")
-
--- Disable virtual_text since it's redundant due to lsp_lines.
-vim.diagnostic.config({
-	virtual_text = false,
-})

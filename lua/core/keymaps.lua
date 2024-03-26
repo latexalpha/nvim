@@ -98,6 +98,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
 	end,
 })
-
--- lsp_lines
-map("", "<Leader>lh", require("lsp_lines").toggle, { desc = "Toggle lsp_lines help" })
