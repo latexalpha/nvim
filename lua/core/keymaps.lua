@@ -8,11 +8,11 @@ map("t", "jk", "C-\\><C-n>")
 -- move selected line / block of text in visual mode
 map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected texts down. " })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected texts up. " })
-map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer. " }) -- set :w keymap
 map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer " }) -- set :q keymap
+map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer. " }) -- set :w keymap
 map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit " }) -- set :wq keymap
 map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight " }) -- set no highlight keymap
-map("", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
+map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
 
 -- keymaps for diagnostics
 map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " }) -- represents diagnostic open_float
@@ -31,10 +31,6 @@ map("n", "<leader>ks", builtin.keymaps, { desc = "Telescope keymaps" })
 
 -- nvim-tree
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTreeToggle" })
-
--- trouble.nvim
-map("n", "<leader>tt", "<cmd>TroubleToggle<cr>", { desc = "TroubleToggle" })
-map("n", "<leader>tc", "<cmd>TroubleClose<cr>", { desc = "TroubleClose" })
 
 -- nvim-dap
 map("n", "<F5>", function()
@@ -72,7 +68,7 @@ end, { desc = "Toggle DAPui" })
 -- Noice
 map("n", "<leader>nl", function()
 	require("noice").cmd("last")
-end, { desc = "Noice Last Message. " })
+end, { desc = "Noice Last Message." })
 map("n", "<leader>nh", function()
 	require("noice").cmd("history")
 end, { desc = "Noice History" })
@@ -86,12 +82,12 @@ map({ "i", "n", "s" }, "<c-f>", function()
 	if not require("noice.lsp").scroll(4) then
 		return "<c-f>"
 	end
-end, { silent = true, expr = true, desc = "Scroll forward. " })
+end, { silent = true, expr = true, desc = "Scroll forward." })
 map({ "i", "n", "s" }, "<c-b>", function()
 	if not require("noice.lsp").scroll(-4) then
 		return "<c-b>"
 	end
-end, { silent = true, expr = true, desc = "Scroll backward. " })
+end, { silent = true, expr = true, desc = "Scroll backward." })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
