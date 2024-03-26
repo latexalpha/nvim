@@ -1,4 +1,5 @@
--- FUNCTION: grammer highlighting
+-- PLUGIN: nvim-treesitter
+-- FUNCTIONALITY: grammer highlighting
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPost", "BufNewFile" },

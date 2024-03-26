@@ -1,4 +1,5 @@
--- FUNCTION: file explorer
+-- PLUGIN: nvim-tree
+-- FUNCTIONALITY: file explorer
 return {
 	"nvim-tree/nvim-tree.lua",
 	lazy = false,

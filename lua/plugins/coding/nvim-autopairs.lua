@@ -1,4 +1,5 @@
--- FUNCTION: auto pairs for symbols
+-- PLUGIN: nvim-autopairs
+-- FUNCTIONALITY: auto pairs for symbols
 return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",

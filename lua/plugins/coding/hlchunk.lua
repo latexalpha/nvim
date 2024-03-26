@@ -1,3 +1,5 @@
+-- PLUGIN: hlchunk.nvim
+-- FUNCTIONALITY: highlight chunks of code
 return {
 	"shellRaining/hlchunk.nvim",
 	event = { "UIEnter" },

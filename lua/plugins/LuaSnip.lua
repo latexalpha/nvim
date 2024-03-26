@@ -1,4 +1,5 @@
--- FUNCTION: snippets management
+-- PLUGIN: LuaSnip
+-- FUNCTIONALITY: snippets management
 return {
 	"L3MON4D3/LuaSnip",
 	config = function()

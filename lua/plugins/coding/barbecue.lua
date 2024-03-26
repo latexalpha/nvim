@@ -1,6 +1,6 @@
--- FUNCTION: VS Code winbar
+-- PLUGIN: barbecue.nvim
+-- FUNCTIONALITY: VS Code style winbar
 return {
-	-- https://github.com/utilyre/barbecue.nvim
 	"utilyre/barbecue.nvim",
 	event = "VeryLazy",
 	dependencies = {

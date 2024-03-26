@@ -1,4 +1,5 @@
--- FUNCTION: add surrounds
+-- PLUGIN: nvim-surround
+-- FUNCTIONALITY: add surrounds
 return {
     "kylechui/nvim-surround",
     event = "VeryLazy",

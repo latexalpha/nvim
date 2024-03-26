@@ -1,4 +1,5 @@
--- FUNCTION: key cursor in center of screen
+-- PLUGIN: accelerated-jk
+-- FUNCTIONALITY: key cursor in center of screen
 return {
 	"rhysd/accelerated-jk",
 	keys = {

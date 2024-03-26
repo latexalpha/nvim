@@ -1,4 +1,5 @@
--- FUNCTION: grep search in files
+-- PLUGIN: telescope.nvim
+-- FUNCTIONALITY: grep search in files
 return {
 	"nvim-telescope/telescope.nvim",
 	cmd = "Telescope",

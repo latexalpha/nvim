@@ -1,3 +1,4 @@
+-- FUNCTIONALITY: set options
 local opt = vim.opt
 
 opt.clipboard = "unnamedplus" -- clipboard

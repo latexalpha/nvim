@@ -1,4 +1,5 @@
--- FUNCTION: file formatting
+-- PLUGIN: null-ls.nvim
+-- FUNCTIONALITY: file formatting
 return {
 	"jose-elias-alvarez/null-ls.nvim",
 

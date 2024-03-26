@@ -1,4 +1,5 @@
--- FUNCTION: debug for python
+-- PLUGIN: nvim-dap
+-- FUNCTIONALITY: debug for python
 return {
 	{
 		"rcarriga/nvim-dap-ui",

@@ -1,3 +1,5 @@
+-- PLUGIN: neodev.nvim
+-- FUNCTIONALITY: Debugging and development tools for Neovim 
 return {
 	"folke/neodev.nvim",
 	opts = {

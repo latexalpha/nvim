@@ -1,4 +1,5 @@
--- FUNCTION: auto completion for LSP, LuaSnip, buffer and path
+-- PLUGIN: nvim-cmp
+-- FUNCTIONALITY: auto completion for LSP, LuaSnip, buffer and path
 local has_words_before = function()
 	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))

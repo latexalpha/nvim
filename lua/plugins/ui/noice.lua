@@ -1,4 +1,6 @@
-return {-- noicer ui
+-- PLUGIN: noice.nvim
+-- FUNCTIONALITY: noice ui
+return {
     "folke/noice.nvim",
     event = "VeryLazy",
 

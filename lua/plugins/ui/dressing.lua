@@ -1,5 +1,6 @@
+-- PLUGIN: dressing.nvim
+-- FUNCTIONALITY: UI for selecting and inputting text
 return {
-    -- better vim.ui
     "stevearc/dressing.nvim",
     lazy = true,
     opts = {

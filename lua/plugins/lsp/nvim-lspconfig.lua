@@ -1,5 +1,5 @@
--- FUNCTION: LSP settings
-
+-- PLUGIN: nvim-lspconfig
+-- FUNCTIONALITY: LSP settings
 vim.diagnostic.config({
 	virtual_text = false,
 })

@@ -1,3 +1,5 @@
+-- PLUGIN: alpha-nvim
+-- FUNCTIONALITY: dashboard with a start screen
 return {
     "goolord/alpha-nvim",
     event = "VimEnter",

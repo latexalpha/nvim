@@ -1,4 +1,5 @@
--- colorscheme
+-- PLUGIN: catppuccin/nvim
+-- FUNCTIONALITY: colorscheme
 return {
     "catppuccin/nvim",
     name = "catppuccin",

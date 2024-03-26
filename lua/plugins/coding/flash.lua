@@ -1,3 +1,5 @@
+-- PLUGIN: flash.nvim
+-- FUNCTIONALITY: add labels to search results
 return {
 	"folke/flash.nvim",
 	event = "VeryLazy",

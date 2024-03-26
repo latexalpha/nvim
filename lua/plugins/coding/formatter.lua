@@ -1,3 +1,5 @@
+-- PLUGIN: formatter.nvim
+-- FUNCTIONALITY: code formatting for lua
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 augroup("__formatter__", { clear = true })

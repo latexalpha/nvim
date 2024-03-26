@@ -1,4 +1,5 @@
--- FUNCTION: comment for codes
+-- PLUGIN: Comment.nvim
+-- FUNCTIONALITY: comment for codes
 return {
 	"numToStr/Comment.nvim",
 	opts = {
