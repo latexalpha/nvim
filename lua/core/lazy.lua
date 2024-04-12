@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
 -- use lazy.nvim to manage plugins
 require("lazy").setup({
 	-- importing directories
@@ -49,3 +48,4 @@ vim.cmd.colorscheme("catppuccin")
 -- personal specs
 require("core.keymaps")
 require("core.options")
+

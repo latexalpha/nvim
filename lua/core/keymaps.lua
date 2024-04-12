@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
-map("i", "jk", "<ESC>")
+map({ "n", "i", "x" }, "jk", "<ESC>")
 map("t", "jk", "C-\\><C-n>")
 
 -- move selected line / block of text in visual mode
