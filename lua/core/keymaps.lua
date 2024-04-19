@@ -24,8 +24,6 @@ map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnosti
 -- --------------------Plugin keymaps--------------------
 -- telescope.nvim
 local builtin = require("telescope.builtin")
-map("n", "<leader>ff", builtin.find_files, { desc = "Telescope find_files" })
-map("n", "<leader>fg", builtin.live_grep, { desc = " Telescope live_grep" })
 map("n", "<leader>fb", builtin.buffers, { desc = "Telescope bffers" })
 map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help_tags" })
 map("n", "<leader>ks", builtin.keymaps, { desc = "Telescope keymaps" })
