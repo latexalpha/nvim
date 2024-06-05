@@ -16,18 +16,7 @@ return {
 
 		-- Use an on_attach function to only map the following keys
 		-- after the language server attaches to the current buffer
-		local on_attach = function(client, bufnr)
-			local rc = client.server_capabilities
-
-			if client.name == "pyright" then
-				rc.hover = false
-			end
-
-			if client.name == "black" then
-				rc.rename = false
-				rc.signature_help = false
-			end
-
+		local python_on_attach = function(client, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -43,7 +32,11 @@ return {
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-			vim.keymap.set("n", "<leader>f", function()
+		end
+
+		local latex_on_attach = function(client, bufnr)
+			local bufopts = { noremap = true, silent = true, buffer = bufnr }
+			vim.keymap.set("n", "<leader>ft", function()
 				vim.lsp.buf.format({ async = true })
 			end, bufopts)
 		end
@@ -62,12 +55,11 @@ return {
 
 		-- language server for latex
 		lspconfig.texlab.setup({
-			on_attach = on_attach,
+			on_attach = latex_on_attach,
 		})
 
-		-- language server for python with pyright and ruff_lsp
 		lspconfig.pyright.setup({
-			on_attach = on_attach,
+			on_attach = python_on_attach,
 			capabilities = (function()
 				local capabilities = vim.lsp.protocol.make_client_capabilities()
 				capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
@@ -83,16 +75,6 @@ return {
 						},
 						useLibraryCodeForTypes = true,
 					},
-				},
-			},
-		})
-
-		lspconfig.ruff_lsp.setup({
-			on_attach = on_attach,
-			init_options = {
-				settings = {
-					-- Any extra CLI arguments for `ruff` go here.
-					args = {},
 				},
 			},
 		})
@@ -119,7 +101,6 @@ return {
 						"lua_ls", -- lua
 						"texlab", -- latex
 						"pyright", -- python
-						"black", --python
 					}
 				else
 					Ensure_installed = {

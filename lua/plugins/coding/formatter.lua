@@ -1,5 +1,7 @@
 -- PLUGIN: formatter.nvim
 -- FUNCTIONALITY: code formatting for lua
+
+-- the auto command group to format files on save
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 augroup("__formatter__", { clear = true })
@@ -11,7 +13,6 @@ autocmd("BufWritePost", {
 return {
 	"mhartington/formatter.nvim",
 	config = function()
-		local util = require("formatter.util")
 		require("formatter").setup({
 			-- Enable or disable logging
 			logging = true,
@@ -19,33 +20,14 @@ return {
 			log_level = vim.log.levels.WARN,
 			-- All formatter configurations are opt-in
 			filetype = {
-				-- Formatter configurations for filetype "lua" go here
-				-- and will be executed in order
 				lua = {
-					-- "formatter.filetypes.lua" defines default configurations for the
-					-- "lua" filetype
 					require("formatter.filetypes.lua").stylua,
-
-					-- You can also define your own configuration
-					function()
-						-- Supports conditional formatting
-						if util.get_current_buffer_file_name() == "special.lua" then
-							return nil
-						end
-						-- Full specification of configurations is down below and in Vim help
-						-- files
-						return {
-							exe = "stylua",
-							args = {
-								"--search-parent-directories",
-								"--stdin-filepath",
-								util.escape_path(util.get_current_buffer_file_path()),
-								"--",
-								"-",
-							},
-							stdin = true,
-						}
-					end,
+				},
+				python = {
+					require("formatter.filetypes.python").black,
+				},
+				markdown = {
+					require("formatter.filetypes.markdown").prettier,
 				},
 			},
 		})
