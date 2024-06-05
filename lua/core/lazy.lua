@@ -17,7 +17,6 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 		{ import = "plugins.coding" },
-		{ import = "plugins.lsp" },
 		{ import = "plugins.ui" },
 	},
 
@@ -48,4 +47,3 @@ vim.cmd.colorscheme("catppuccin")
 -- personal specs
 require("core.keymaps")
 require("core.options")
-

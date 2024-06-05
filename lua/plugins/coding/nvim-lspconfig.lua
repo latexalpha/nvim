@@ -61,7 +61,9 @@ return {
 		})
 
 		-- language server for latex
-		lspconfig.texlab.setup({})
+		lspconfig.texlab.setup({
+			on_attach = on_attach,
+		})
 
 		-- language server for python with pyright and ruff_lsp
 		lspconfig.pyright.setup({
@@ -104,7 +106,6 @@ return {
 				"Mason",
 				"MasonInstall",
 				"MasonUninstall",
-				"MasonUninstallAll",
 			},
 			dependencies = "williamboman/mason-lspconfig.nvim",
 			config = function()
@@ -118,6 +119,7 @@ return {
 						"lua_ls", -- lua
 						"texlab", -- latex
 						"pyright", -- python
+						"black", --python
 					}
 				else
 					Ensure_installed = {

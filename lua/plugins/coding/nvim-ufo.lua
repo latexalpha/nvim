@@ -46,7 +46,10 @@ return {
 	},
 	config = function()
 		require("ufo").setup({
+			open_fold_hl_timeout = 400,
+			close_fold_kinds_for_ft = { default = { default = {} } },
 			fold_virt_text_handler = handler,
+			enable_get_fold_virt_text = false,
 			preview = {
 				win_config = {
 					border = { "", "─", "", "", "", "─", "", "" },
