@@ -3,14 +3,7 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	lazy = false,
-
-	dependencies = {
-		{
-			"nvim-tree/nvim-web-devicons",
-			lazy = true,
-		},
-	},
-
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		sort_by = "case_sensitive",
 		renderer = {
@@ -18,6 +11,9 @@ return {
 		},
 		filters = {
 			dotfiles = true,
+		},
+		view = {
+			width = 40,
 		},
 	},
 
