@@ -1,8 +1,9 @@
 -- PLUGIN: nvim-tree
 -- FUNCTIONALITY: file explorer
+local map = vim.keymap.set
 return {
 	"nvim-tree/nvim-tree.lua",
-	lazy = false,
+	lazy = false, -- must set lazy to false
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		sort_by = "case_sensitive",
@@ -18,6 +19,7 @@ return {
 	},
 
 	config = function(_, opts)
+		map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTreeToggle" })
 		require("nvim-tree").setup(opts)
 	end,
 }

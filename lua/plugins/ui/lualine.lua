@@ -2,7 +2,7 @@
 -- FUNCTIONALITY: statusline at the bottom of Terminal
 return {
 	"nvim-lualine/lualine.nvim",
-	event = "VimEnter",
+	event = "UIEnter",
 	dependencies = {
 		"nvim-web-devicons",
 		"folke/noice.nvim",

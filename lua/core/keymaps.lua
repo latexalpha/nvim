@@ -21,67 +21,6 @@ map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Move to the previous 
 map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Get the next diagnostic closest to the cursor position. " }) -- represents diagnostic goto_next
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " }) -- represents diagnostic setloclist
 
--- --------------------Plugin keymaps--------------------
--- telescope.nvim
-local builtin = require("telescope.builtin")
-map("n", "<leader>fb", builtin.buffers, { desc = "Telescope bffers" })
-map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help_tags" })
-map("n", "<leader>ks", builtin.keymaps, { desc = "Telescope keymaps" })
-
--- nvim-tree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTreeToggle" })
-
--- nvim-dap
-map("n", "<F5>", function()
-	require("dap").continue()
-end, { desc = "DAP continue" })
-map("n", "<F10>", function()
-	require("dap").step_over()
-end, { desc = "Step over" })
-map("n", "<F11>", function()
-	require("dap").step_into()
-end, { desc = "Step into" })
-map("n", "<F12>", function()
-	require("dap").step_out()
-end, { desc = "Step out" })
-map("n", "<leader>db", function()
-	require("dap").toggle_breakpoint()
-end, { desc = "Toggle breqkpoint" })
-map("n", "<leader>ds", function()
-	require("dap").set_breakpoint()
-end, { desc = "Set breakpoint" })
-map("n", "<leader>dr", function()
-	require("dap").repl.open()
-end, { desc = "Open Repl" })
-
-map("n", "<leader>dt", function()
-	require("dapui").toggle()
-end, { desc = "Toggle DAPui" })
-
--- Noice
-map("n", "<leader>nl", function()
-	require("noice").cmd("last")
-end, { desc = "Noice Last Message." })
-map("n", "<leader>nh", function()
-	require("noice").cmd("history")
-end, { desc = "Noice History" })
-map("n", "<leader>na", function()
-	require("noice").cmd("all")
-end, { desc = "Noice All" })
-map("c", "<S-Enter>", function()
-	require("noice").redirect(vim.fn.getcmdline())
-end, { desc = "Redirect Cmdline" })
-map({ "i", "n", "s" }, "<c-f>", function()
-	if not require("noice.lsp").scroll(4) then
-		return "<c-f>"
-	end
-end, { silent = true, expr = true, desc = "Scroll forward." })
-map({ "i", "n", "s" }, "<c-b>", function()
-	if not require("noice.lsp").scroll(-4) then
-		return "<c-b>"
-	end
-end, { silent = true, expr = true, desc = "Scroll backward." })
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })

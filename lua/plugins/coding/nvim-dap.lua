@@ -1,5 +1,6 @@
 -- PLUGIN: nvim-dap
 -- FUNCTIONALITY: debug for python
+local map = vim.keymap.set
 return {
 	{
 		"rcarriga/nvim-dap-ui",
@@ -51,6 +52,33 @@ return {
 		"mfussenegger/nvim-dap",
 		config = function()
 			local dap = require("dap")
+			-- nvim-dap
+			map("n", "<F5>", function()
+				require("dap").continue()
+			end, { desc = "DAP continue" })
+			map("n", "<F10>", function()
+				require("dap").step_over()
+			end, { desc = "Step over" })
+			map("n", "<F11>", function()
+				require("dap").step_into()
+			end, { desc = "Step into" })
+			map("n", "<F12>", function()
+				require("dap").step_out()
+			end, { desc = "Step out" })
+			map("n", "<leader>db", function()
+				require("dap").toggle_breakpoint()
+			end, { desc = "Toggle breqkpoint" })
+			map("n", "<leader>ds", function()
+				require("dap").set_breakpoint()
+			end, { desc = "Set breakpoint" })
+			map("n", "<leader>dr", function()
+				require("dap").repl.open()
+			end, { desc = "Open Repl" })
+
+			map("n", "<leader>dt", function()
+				require("dapui").toggle()
+			end, { desc = "Toggle DAPui" })
+
 			dap.adapters.python = {
 				type = "executable",
 				command = vim.g.python3_host_prog,
