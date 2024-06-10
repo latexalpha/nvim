@@ -16,10 +16,10 @@ map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight " }) -- set no hig
 map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
 
 -- keymaps for diagnostics
-map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " }) -- represents diagnostic open_float
+-- map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " }) -- represents diagnostic open_float
 map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Move to the previous diagnostic in the current buffer " }) -- represents diagnostic goto_prev
 map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Get the next diagnostic closest to the cursor position. " }) -- represents diagnostic goto_next
-map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " }) -- represents diagnostic setloclist
+-- map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " }) -- represents diagnostic setloclist
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
