@@ -93,7 +93,7 @@ return {
 					-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 					program = "${file}", -- This configuration will launch the current file if used.
 					console = "internalConsole", --integratedTerminal",
-					-- -- pythonPath = "C:/Users/heihi/miniconda3/envs/torch20/python.exe"
+					-- -- pythonPath = "~/miniconda3/envs/torch20/python.exe"
 					-- pythonPath = function()
 					--     local is_windows = function()
 					--         return vim.loop.os_uname().sysname:find("Windows", 1, true) and true

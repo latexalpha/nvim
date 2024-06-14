@@ -15,7 +15,7 @@ g.loaded_node_provider = 0
 -- require settings according to the OS
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
-	g.python3_host_prog = "C:/Users/heihi/miniconda3/python"
+	g.python3_host_prog = "~/miniconda3/python"
 	-- set the Nvim python virtual environment
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
@@ -31,7 +31,7 @@ if binaryformat == "dll" then
 	g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 	--
 elseif binaryformat == "so" then
-	g.python3_host_prog = "/home/xxxxx/miniconda3/bin/python"
+	g.python3_host_prog = "~/miniconda3/bin/python"
 	-- set the Nvim python virtual environment
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
