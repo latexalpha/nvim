@@ -10,6 +10,7 @@ autocmd("BufWritePost", {
 	command = ":FormatWrite",
 })
 
+-- the formatters need to be installed via Mason
 return {
 	"mhartington/formatter.nvim",
 	config = function()
@@ -24,7 +25,7 @@ return {
 					require("formatter.filetypes.lua").stylua,
 				},
 				python = {
-					require("formatter.filetypes.python").black,
+					require("formatter.filetypes.python").ruff,
 				},
 				markdown = {
 					require("formatter.filetypes.markdown").prettier,

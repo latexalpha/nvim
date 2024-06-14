@@ -42,7 +42,6 @@ return {
 			end, bufopts)
 		end
 
-		-- Language server settings for per language
 		-- Language server for lua
 		lspconfig.lua_ls.setup({
 			settings = {
@@ -54,11 +53,14 @@ return {
 			},
 		})
 
+		lspconfig.ltex.setup({})
+
 		-- language server for latex
 		lspconfig.texlab.setup({
 			on_attach = latex_on_attach,
 		})
 
+		-- language server for python
 		lspconfig.pyright.setup({
 			on_attach = python_on_attach,
 			capabilities = (function()
@@ -98,14 +100,16 @@ return {
 				local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 				if binaryformat == "dll" then
 					Ensure_installed = {
-						-- ensured installed language servers
-						"lua_ls", -- lua
-						"texlab", -- latex
-						"pyright", -- python
+						-- LSP
+						"lua_ls", -- lua LSP
+						"texlab", -- latex LSP
+						"pyright", -- python LSP
+						-- linter
+						"ruff", -- python linter
+						"ltex", -- LSP for text, markdown, latex
 					}
 				else
 					Ensure_installed = {
-						-- ensured installed language servers
 						"lua_ls", -- lua
 						"pyright", -- python
 					}
