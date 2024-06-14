@@ -1,16 +1,14 @@
 # README
 
+<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/plugin-manager?style=flat" /></a>
+
 Neovim configuration for cross-platform work scenarios, the following platforms are supported:
 
 - Windows
 - Linux
 - Windows Subsystem for Linux (WSL)
-
-
-<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/latexalpha/nvim"><img src="https://dotfyle.com/latexalpha/nvim/badges/plugin-manager?style=flat" /></a>
-
 
 ## Install Instructions
 
