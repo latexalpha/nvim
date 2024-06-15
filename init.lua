@@ -12,27 +12,69 @@ g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
 
--- require settings according to the OS
+-- keymap settings
+local map = vim.keymap.set
+
+map({ "n", "i", "x" }, "jk", "<ESC>")
+map("t", "jk", "C-\\><C-n>")
+map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected texts down. " })
+map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected texts up. " })
+map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer " })
+map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer. " })
+map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit " })
+map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight " })
+map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
+-- keymaps for diagnostics
+-- map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " })
+map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Move to the previous diagnostic in the current buffer " })
+map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Get the next diagnostic closest to the cursor position. " })
+-- map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " })
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
+	end,
+})
+
+-- option settings
+local opt = vim.opt
+opt.clipboard = "unnamedplus" -- clipboard
+opt.relativenumber = true -- number line
+opt.number = true
+opt.tabstop = 4 -- indent
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.autoindent = true
+opt.wrap = true -- wrap
+opt.cursorline = true -- cursor
+opt.mouse:append("a") -- mouse
+opt.splitright = true -- new window location
+opt.splitbelow = true
+opt.ignorecase = true -- search
+opt.smartcase = true
+opt.termguicolors = true -- true colors
+opt.signcolumn = "yes"
+opt.list = true -- lists
+opt.listchars:append("space:⋅")
+opt.listchars:append("eol:↴")
+
+-- OS specific settings
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
-	g.python3_host_prog = "~/miniconda3/python"
-	-- set the Nvim python virtual environment
+	g.python3_host_prog = "~/miniconda3/python" -- set the Nvim python virtual environment
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "\\python.exe"
     ]])
-
-	-- -------------------VimTeX settings-------------------
+	-- VimTeX settings for Windows
 	g.tex_flavor = "latex"
 	g.vimtex_compiler_method = "latexmk"
 	g.vimtex_indent_bib_enabled = true
 	g.vimtex_format_enabled = false
 	g.vimtex_view_general_viewer = "SumatraPDF"
 	g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
-	--
 elseif binaryformat == "so" then
-	g.python3_host_prog = "~/miniconda3/bin/python"
-	-- set the Nvim python virtual environment
+	g.python3_host_prog = "~/miniconda3/bin/python" -- set the Nvim python virtual environment
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
@@ -41,7 +83,6 @@ end
 binaryformat = nil
 
 -- bootstrap lazy.nvim
--- FUNCTIONALITY: bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -49,29 +90,25 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
--- use lazy.nvim to manage plugins
 require("lazy").setup({
-	-- importing directories
-	spec = {
+	spec = { -- importing directories
 		{ import = "plugins" },
 		{ import = "plugins.coding" },
 		{ import = "plugins.ui" },
 	},
-	-- ui config
-	ui = {
+	ui = { -- ui config
 		border = "double",
 		size = {
 			width = 0.8,
 			height = 0.8,
 		},
 	},
-	-- check updated
-	checker = {
+	checker = { -- check updates
 		enabled = true,
 		notify = false,
 	},
@@ -80,8 +117,4 @@ require("lazy").setup({
 	},
 })
 
--- colorscheme
-vim.cmd.colorscheme("catppuccin")
-
-require("core.keymaps")
-require("core.options")
+vim.cmd.colorscheme("catppuccin") -- colorscheme
