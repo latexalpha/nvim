@@ -20,6 +20,7 @@ return {
 
 	config = function(_, opts)
 		map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTreeToggle" })
-		require("nvim-tree").setup(opts)
+		local nvim_tree = require("nvim-tree")
+		nvim_tree.setup(opts)
 	end,
 }

@@ -8,7 +8,8 @@ return {
 		"folke/noice.nvim",
 	},
 	config = function()
-		require("lualine").setup({
+		local lualine = require("lualine")
+		lualine.setup({
 			options = {
 				theme = "auto",
 				component_separators = { left = "|", right = "|" },

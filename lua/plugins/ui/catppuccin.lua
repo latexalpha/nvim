@@ -45,6 +45,7 @@ return {
 		},
 	},
 	config = function(_, opts)
-		require("catppuccin").setup(opts)
+		local catppuccin = require("catppuccin")
+		catppuccin.setup(opts)
 	end,
 }

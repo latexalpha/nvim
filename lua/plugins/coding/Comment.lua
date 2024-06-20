@@ -7,6 +7,7 @@ return {
 		ignore = "^$", -- ignore empty line
 	},
 	config = function(_, opts)
-		require("Comment").setup(opts)
+		local comment = require("Comment")
+		comment.setup(opts)
 	end,
 }

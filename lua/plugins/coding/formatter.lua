@@ -14,12 +14,10 @@ autocmd("BufWritePost", {
 return {
 	"mhartington/formatter.nvim",
 	config = function()
-		require("formatter").setup({
-			-- Enable or disable logging
+		local formatter = require("formatter")
+		formatter.setup({
 			logging = true,
-			-- Set the log level
 			log_level = vim.log.levels.WARN,
-			-- All formatter configurations are opt-in
 			filetype = {
 				lua = {
 					require("formatter.filetypes.lua").stylua,

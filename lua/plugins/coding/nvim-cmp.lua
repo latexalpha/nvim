@@ -42,7 +42,7 @@ return {
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 				["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-				["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
 
 				-- <Tab> settings
 				["<Tab>"] = cmp.mapping(function(fallback)
@@ -82,6 +82,7 @@ return {
 	end,
 
 	config = function(_, opts)
-		require("cmp").setup(opts)
+		local cmp = require("cmp")
+		cmp.setup(opts)
 	end,
 }

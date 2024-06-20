@@ -1,5 +1,10 @@
 -- PLUGIN: nvim-lspconfig
 -- FUNCTIONALITY: LSP settings
+--
+-- The setup order should be:
+-- 1. `mason.nvim`
+-- 2. `mason-lspconfig.nvim`
+-- 3. Setup servers via `lspconfig`
 
 -- vim.diagnostic.config({
 -- 	virtual_text = false,
@@ -92,11 +97,25 @@ return {
 				"MasonInstall",
 				"MasonUninstall",
 			},
-			dependencies = "williamboman/mason-lspconfig.nvim",
 			config = function()
 				local mason = require("mason")
+				mason.setup({
+					ui = {
+						check_outdated_packages_on_open = false,
+						border = "single",
+						icons = {
+							package_pending = " ",
+							package_installed = " ",
+							package_uninstalled = " ",
+						},
+					},
+				})
+			end,
+		},
+		{
+			"williamboman/mason-lspconfig.nvim",
+			config = function()
 				local mason_lspconfig = require("mason-lspconfig")
-
 				local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 				if binaryformat == "dll" then
 					Ensure_installed = {
@@ -116,18 +135,6 @@ return {
 				end
 				binaryformat = nil
 
-				mason.setup({
-					ui = {
-						-- Whether to automatically check for new versions when opening the :Mason window.
-						check_outdated_packages_on_open = false,
-						border = "single",
-						icons = {
-							package_pending = " ",
-							package_installed = " ",
-							package_uninstalled = " ",
-						},
-					},
-				})
 				mason_lspconfig.setup({
 					ensure_installed = Ensure_installed,
 				})

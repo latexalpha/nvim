@@ -34,6 +34,7 @@ return {
 		},
 	},
 	config = function(_, opts)
-		require("dressing").setup(opts)
+		local dressing = require("dressing")
+		dressing.setup(opts)
 	end,
 }

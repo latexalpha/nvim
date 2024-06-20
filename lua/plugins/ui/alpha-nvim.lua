@@ -48,7 +48,8 @@ return {
 			})
 		end
 
-		require("alpha").setup(dashboard.opts)
+		local alpha = require("alpha")
+		alpha.setup(dashboard.opts)
 
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "SYNVIM",

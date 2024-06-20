@@ -74,6 +74,7 @@ return {
 			end
 		end, { silent = true, expr = true, desc = "Scroll backward." })
 
-		require("noice").setup(opts)
+		local noice = require("noice")
+		noice.setup(opts)
 	end,
 }

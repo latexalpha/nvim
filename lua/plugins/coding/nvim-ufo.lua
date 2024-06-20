@@ -45,7 +45,8 @@ return {
 		},
 	},
 	config = function()
-		require("ufo").setup({
+		local ufo = require("ufo")
+		ufo.setup({
 			open_fold_hl_timeout = 400,
 			close_fold_kinds_for_ft = { default = { default = {} } },
 			fold_virt_text_handler = handler,
