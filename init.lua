@@ -38,8 +38,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- option settings
 local opt = vim.opt
 opt.clipboard = "unnamedplus" -- clipboard
-opt.relativenumber = true -- number line
-opt.number = true
+opt.number = true -- show line number
+opt.relativenumber = true -- relative line number
 opt.tabstop = 4 -- indent
 opt.softtabstop = 4
 opt.shiftwidth = 4
