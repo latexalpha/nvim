@@ -12,6 +12,8 @@ g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
 
+-- vim.o.cmdheight = 0 -- hide cmd line when inactive
+
 -- keymap settings
 local map = vim.keymap.set
 
@@ -25,7 +27,7 @@ map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit " })
 map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight " })
 map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
 -- keymaps for diagnostics
--- map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " })
+map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " })
 map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Move to the previous diagnostic in the current buffer " })
 map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Get the next diagnostic closest to the cursor position. " })
 -- map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " })
@@ -100,6 +102,21 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{ import = "plugins.coding" },
 		{ import = "plugins.ui" },
+	},
+	pkg = {
+		enabled = true,
+		cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+		versions = true, -- Honor versions in pkg sources
+		-- the first package source that is found for a plugin will be used.
+		sources = {
+			"lazy",
+			"rockspec",
+			"packspec",
+		},
+	},
+	rocks = {
+		root = vim.fn.stdpath("data") .. "/lazy-rocks",
+		server = "https://nvim-neorocks.github.io/rocks-binaries/",
 	},
 	ui = { -- ui config
 		border = "double",

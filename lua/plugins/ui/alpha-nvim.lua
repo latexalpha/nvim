@@ -32,7 +32,7 @@ return {
 		dashboard.section.footer.opts.hl = "Type"
 		dashboard.section.header.opts.hl = "AlphaHeader"
 		dashboard.section.buttons.opts.hl = "AlphaButtons"
-		dashboard.opts.layout[1].val = 8
+		dashboard.opts.layout[1].val = 5 -- line number to pad above the startup logo
 		return dashboard
 	end,
 
