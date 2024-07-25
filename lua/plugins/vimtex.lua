@@ -7,6 +7,6 @@ if binaryformat == "dll" then
 		"lervag/vimtex",
 	}
 else
--- Only return configuration on Windows
+	-- Only return configuration on Windows
 	return {}
 end

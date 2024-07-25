@@ -13,6 +13,7 @@ autocmd("BufWritePost", {
 -- the formatters need to be installed via Mason
 return {
 	"mhartington/formatter.nvim",
+	event = "VeryLazy",
 	config = function()
 		local formatter = require("formatter")
 		formatter.setup({

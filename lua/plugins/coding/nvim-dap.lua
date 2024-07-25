@@ -4,6 +4,7 @@ local map = vim.keymap.set
 return {
 	{
 		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
