@@ -17,13 +17,14 @@ return {
 
 		dashboard.section.header.val = vim.split(logo, "\n")
 		dashboard.section.buttons.val = {
-			dashboard.button("<leader>nf", " " .. " New file", ":ene <BAR> startinsert <CR>"),
+			dashboard.button("<leader>cf", " " .. " Open config", ":e $MYVIMRC <CR>"),
+			dashboard.button("<leader>nf", " " .. " Create file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("<leader>ff", " " .. " Find file", ":Telescope find_files <CR>"),
-			dashboard.button("<leader>fo", " " .. " Recent files", ":Telescope oldfiles <CR>"),
 			dashboard.button("<leader>fg", " " .. " Find text", ":Telescope live_grep <CR>"),
-			dashboard.button("<leader>cf", " " .. " Config", ":e $MYVIMRC <CR>"),
-			dashboard.button("<leader>l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
-			dashboard.button("<leader>q", " " .. " Quit", ":qa<CR>"),
+			dashboard.button("<leader>fk", " " .. " Find keymaps", ":Telescope keymaps <CR>"),
+			dashboard.button("<leader>fo", " " .. " Find recent files", ":Telescope oldfiles <CR>"),
+			dashboard.button("<leader>l", "󰒲 " .. " Open Lazy", ":Lazy<CR>"),
+			dashboard.button("<leader>q", " " .. " Quit Nvim", ":qa<CR>"),
 		}
 		for _, button in ipairs(dashboard.section.buttons.val) do
 			button.opts.hl = "AlphaButtons"
@@ -32,7 +33,7 @@ return {
 		dashboard.section.footer.opts.hl = "Type"
 		dashboard.section.header.opts.hl = "AlphaHeader"
 		dashboard.section.buttons.opts.hl = "AlphaButtons"
-		dashboard.opts.layout[1].val = 5 -- line number to pad above the startup logo
+		dashboard.opts.layout[1].val = 4 -- line number to pad above the startup logo
 		return dashboard
 	end,
 
