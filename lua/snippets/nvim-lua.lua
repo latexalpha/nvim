@@ -3,14 +3,14 @@ local s = ls.snippet
 local i = ls.insert_node
 local fmta = require("luasnip.extras.fmt").fmta
 
-return{
-    s(
-        {
-            trig = "snip",
-            desc = "Snippets structure",
-        },
-        fmta(
-            [[
+return {
+	s(
+		{
+			trig = "snip",
+			desc = "Snippets structure",
+		},
+		fmta(
+			[[
                 s(
                     {
                         trig = "<>",
@@ -26,11 +26,11 @@ return{
                     )
                 ),
             ]],
-            {
-                i(1),
-                i(2),
-                i(3),
-            }
-        )
-    )
+			{
+				i(1),
+				i(2),
+				i(3),
+			}
+		)
+	),
 }

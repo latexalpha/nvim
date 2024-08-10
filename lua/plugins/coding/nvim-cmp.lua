@@ -29,10 +29,28 @@ return {
 
 		return {
 			sources = {
-				{ name = "nvim_lsp", priority = 1000 },
-				{ name = "luasnip", priority = 750 },
-				{ name = "buffer", priority = 500 },
-				{ name = "path", priority = 250 },
+				{ name = "nvim_lsp", priority = 1000, max_item_count = 5 },
+				{ name = "luasnip", priority = 750, max_item_count = 5 },
+				{ name = "buffer", priority = 500, max_item_count = 5 },
+				{ name = "path", priority = 250, max_item_count = 5 },
+			},
+			formatting = {
+				format = function(entry, vim_item)
+					vim_item.menu = ({
+						nvim_lsp = "[LSP]",
+						luasnip = "[LuaSnip]",
+						buffer = "[Buffer]",
+						path = "[Path]",
+					})[entry.source.name]
+
+					vim_item.dup = ({
+						nvim_lsp = 0,
+						luasnip = 0,
+						buffer = 0,
+						path = 0,
+					})[entry.source.name] or 0
+					return vim_item
+				end,
 			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),

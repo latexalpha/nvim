@@ -5,111 +5,111 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 
 return {
-    s(
-        {
-            trig = "frame",
-            dscr = "LaTeX Beamer frame",
-        },
-        fmta(
-            [[
+	s(
+		{
+			trig = "frame",
+			desc = "LaTeX Beamer frame",
+		},
+		fmta(
+			[[
                 \begin{frame}{<>}
                     <>
                 \end{frame}
             ]],
-            {
-                i(1),
-                i(2),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "block",
-            dscr = "LaTeX Beamer block",
-        },
-        fmta(
-            [[
+			{
+				i(1),
+				i(2),
+			}
+		)
+	),
+	s(
+		{
+			trig = "block",
+			desc = "LaTeX Beamer block",
+		},
+		fmta(
+			[[
                 \begin{block}{<>}
                     <>
                 \end{block}
             ]],
-            {
-                i(1),
-                i(2),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "item",
-            dscr = "LaTeX Beamer itemize",
-        },
-        fmta(
-            [[
+			{
+				i(1),
+				i(2),
+			}
+		)
+	),
+	s(
+		{
+			trig = "item",
+			desc = "LaTeX Beamer itemize",
+		},
+		fmta(
+			[[
                 \begin{itemize}
                     \item <>
                     \item <>
                 \end{itemize}
             ]],
-            {
-                i(1),
-                i(2),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "bequ",
-            dscr = "LaTeX Beamer equation in figures",
-        },
-        fmta(
-            [[
+			{
+				i(1),
+				i(2),
+			}
+		)
+	),
+	s(
+		{
+			trig = "bequ",
+			desc = "LaTeX Beamer equation in figures",
+		},
+		fmta(
+			[[
                 \begin{equation}
                     \vcenter{\hbox{\includegraphics[height=0.8cm]{./figures/equation-<>}}}
                     \label{equation-<>}
                 \end{equation}
             ]],
-            {
-                i(1),
-                i(2),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "bcite",
-            dscr = "LaTeX Beamer citation",
-        },
-        fmta(
-            [[
+			{
+				i(1),
+				i(2),
+			}
+		)
+	),
+	s(
+		{
+			trig = "bcite",
+			desc = "LaTeX Beamer citation",
+		},
+		fmta(
+			[[
                 \footfullcite{<>}
             ]],
-            {
-                i(1),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "highlight",
-            dscr = "Highligh text with NYUpurple color and textbf",
-        },
-        fmta(
-            [[
+			{
+				i(1),
+			}
+		)
+	),
+	s(
+		{
+			trig = "highlight",
+			desc = "Highligh text with NYUpurple color and textbf",
+		},
+		fmta(
+			[[
                 \textcolor{nyupurple}{\textbf{<>}}
             ]],
-            {
-                i(1),
-            }
-        )
-    ),
-    s(
-        {
-            trig = "beam",
-            dscr = "LaTeX Beamer template"
-        },
-        fmt(
-            [[
+			{
+				i(1),
+			}
+		)
+	),
+	s(
+		{
+			trig = "beam",
+			desc = "LaTeX Beamer template",
+		},
+		fmt(
+			[[
                 \documentclass[aspectratio=169]{beamer}
                 \mode<<presentation>>
                 {
@@ -182,14 +182,13 @@ return {
                     }
                 \end{document}
             ]],
-            {
-                i(1),
-                i(2),
-            },
-            {
-                delimiters = "<>"
-            }
-
-        )
-    ),
+			{
+				i(1),
+				i(2),
+			},
+			{
+				delimiters = "<>",
+			}
+		)
+	),
 }
