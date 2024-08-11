@@ -32,7 +32,7 @@ return {
 				{ name = "nvim_lsp", priority = 1000, max_item_count = 5 },
 				{ name = "luasnip", priority = 750, max_item_count = 5 },
 				{ name = "buffer", priority = 500, max_item_count = 5 },
-				{ name = "path", priority = 250, max_item_count = 5 },
+				{ name = "path", priority = 250, max_item_count = 10 },
 			},
 			formatting = {
 				format = function(entry, vim_item)
