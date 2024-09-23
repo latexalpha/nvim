@@ -68,8 +68,8 @@ return {
 			[[
                 \begin{figure}[htb]
                     \centering
-                    \includegraphics[width=<>]{./<>}
-                    \caption{<>}
+                    \includegraphics[width=<>\textwidth]{./figures/<>}
+                    % \caption{<>}
                     % \label{figure: <>}
                 \end{figure}
             ]],
