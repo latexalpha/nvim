@@ -141,7 +141,7 @@ return {
                 \renewcommand*{\bibfont}{\scriptsize} % 设置参考文献的字体大小
 
                 %%% 文档头
-                \title[机械与动力工程学院，机械系统与振动国家重点实验室]{<>} % 前面的页脚左侧的内容，后面的是标题
+                \title[机械与动力工程学院，机械系统与振动国家重点实验室]{Title<>} % 前面的页脚左侧的内容，后面的是标题
                 \author{\vspace*{-8pt}\textcolor{white}{赵尚宇}} % 也会出现在页脚右侧
                 \institute{\vspace*{-8pt}\textcolor{white}{上海交通大学}}
                 \date{\textcolor{white}{\today}}
@@ -149,37 +149,39 @@ return {
                 %%% 文档正文内容
                 \begin{document}
 
-                    % Local background must be enclosed by curly braces for grouping.
-                    {
-                        \usebackgroundtemplate{\includegraphics[width=\paperwidth]{./utils/background.pdf}}
-                        \begin{frame}[plain]
-                            \titlepage
-                        \end{frame}
-                    }
+                % Local background must be enclosed by curly braces for grouping.
+                {
+                \usebackgroundtemplate{\includegraphics[width=\paperwidth]{./utils/background.pdf}}
+                \begin{frame}[plain]
+                    \titlepage
+                \end{frame}
+                }
 
-                    % \begin{frame}{Outline}
-                        % \tableofcontents
-                    % \end{frame}
+                % \begin{frame}{Outline}
+                % \tableofcontents
+                % \end{frame}
 
-                    \section[Section short title]{Section formal title}
+                % \section[Section short title]{Section formal title}
+                \section{Section formal title}
 
-                    \begin{frame}{frame title}
-                        <>
-                    \end{frame}
+                \begin{frame}{Frame title}
+                    <>
+                \end{frame}
 
-                    \begin{frame}{参考文献}
-                        \printbibliography
-                    \end{frame}
+                \begin{frame}{References}
+                    \printbibliography
+                \end{frame}
 
-                    {
-                        \usebackgroundtemplate{\includegraphics[height=\paperheight]{./utils/background_end.pdf}}
-                        \begin{frame}[plain]
-                            \vspace*{\fill}
-                            \vskip18pt
-                            \centering {\huge \textbf{\textcolor{white}{感\,谢\,聆\,听}}}
-                            \vspace*{\fill}
-                        \end{frame}
-                    }
+                {
+                \usebackgroundtemplate{\includegraphics[height=\paperheight]{./utils/background_end.pdf}}
+                \begin{frame}[plain]
+                    \vspace*{\fill}
+                    \vskip18pt
+                    \centering {\huge \textbf{\textcolor{white}{感\,谢\,聆\,听}}}
+                    \vspace*{\fill}
+                \end{frame}
+                }
+
                 \end{document}
             ]],
 			{
