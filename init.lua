@@ -83,7 +83,7 @@ elseif binaryformat == "so" then
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
         elseif has("nvim") && !empty($VIRTUAL_ENV)
-            let g:python3_host_prog = $VIRTUAL_ENV . "/Scripts/python"
+            let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
     ]])
 end
 binaryformat = nil
