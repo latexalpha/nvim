@@ -67,6 +67,8 @@ if binaryformat == "dll" then
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "\\python.exe"
+        elseif has("nvim") && !empty($VIRTUAL_ENV)
+            let g:python3_host_prog = $VIRTUAL_ENV. "\\Scripts\\python.exe"
     ]])
 	-- VimTeX settings for Windows
 	g.tex_flavor = "latex"
@@ -80,6 +82,8 @@ elseif binaryformat == "so" then
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
+        elseif has("nvim") && !empty($VIRTUAL_ENV)
+            let g:python3_host_prog = $VIRTUAL_ENV . "/Scripts/python"
     ]])
 end
 binaryformat = nil
