@@ -63,7 +63,9 @@ opt.listchars:append("eol:↴")
 -- OS specific settings
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
 if binaryformat == "dll" then
-	g.python3_host_prog = "~/miniconda3/python" -- set the Nvim python virtual environment
+	-- g.python3_host_prog = "~\\miniconda3\\python" -- set the Nvim python virtual environment
+	g.python3_host_prog = "~\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -- set the Nvim python virtual environment
+	g.python3_host_prog = "C:\\ZSY_apps\\global_python3_host\\.venv\\Scripts\\python.exe" -- set the Nvim python virtual environment
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "\\python.exe"
