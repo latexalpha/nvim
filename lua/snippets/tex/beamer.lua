@@ -41,24 +41,6 @@ return {
 	),
 	s(
 		{
-			trig = "item",
-			desc = "LaTeX Beamer itemize",
-		},
-		fmta(
-			[[
-                \begin{itemize}
-                    \item <>
-                    \item <>
-                \end{itemize}
-            ]],
-			{
-				i(1),
-				i(2),
-			}
-		)
-	),
-	s(
-		{
 			trig = "bequ",
 			desc = "LaTeX Beamer equation in figures",
 		},
