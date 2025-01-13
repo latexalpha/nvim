@@ -24,12 +24,12 @@ return {
 					{
 						require("noice").api.status.message.get_hl,
 						cond = require("noice").api.status.message.has,
-						color = { fg = "#ff9e64" },
+						color = { fg = "#c5c9c5" },
 					},
 					{
 						require("noice").api.status.command.get,
 						cond = require("noice").api.status.command.has,
-						color = { fg = "#ff9e64" },
+						color = { fg = "#c5c9c5" },
 					},
 				},
 			},
