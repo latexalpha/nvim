@@ -22,7 +22,7 @@ return {
 
 		-- Use an on_attach function to only map the following keys
 		-- after the language server attaches to the current buffer
-		local python_on_attach = function(client, bufnr)
+		local python_on_attach = function(_, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -40,7 +40,7 @@ return {
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 		end
 
-		local latex_on_attach = function(client, bufnr)
+		local latex_on_attach = function(_, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set("n", "<leader>ft", function()
 				vim.lsp.buf.format({ async = true })
