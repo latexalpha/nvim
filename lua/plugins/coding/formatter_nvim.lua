@@ -23,9 +23,9 @@ return {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 				},
-				python = {
-					require("formatter.filetypes.python").ruff,
-				},
+				-- python = {
+				-- 	require("formatter.filetypes.python").ruff,
+				-- },
 				markdown = {
 					require("formatter.filetypes.markdown").prettier,
 				},

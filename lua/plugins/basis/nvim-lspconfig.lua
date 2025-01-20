@@ -65,27 +65,27 @@ return {
 			on_attach = latex_on_attach,
 		})
 
-		-- language server for python
-		lspconfig.pyright.setup({
-			on_attach = python_on_attach,
-			capabilities = (function()
-				local capabilities = vim.lsp.protocol.make_client_capabilities()
-				capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-				return capabilities
-			end)(),
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-						diagnosticMode = "off",
-						diagnosticSeverityOverrides = {
-							reportUnusedVariable = "warning", -- or anything
-						},
-						useLibraryCodeForTypes = true,
-					},
-				},
-			},
-		})
+		-- -- language server for python
+		-- lspconfig.pyright.setup({
+		-- 	on_attach = python_on_attach,
+		-- 	capabilities = (function()
+		-- 		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		-- 		capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+		-- 		return capabilities
+		-- 	end)(),
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				typeCheckingMode = "off",
+		-- 				diagnosticMode = "off",
+		-- 				diagnosticSeverityOverrides = {
+		-- 					reportUnusedVariable = "warning", -- or anything
+		-- 				},
+		-- 				useLibraryCodeForTypes = true,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 	end,
 
 	dependencies = {
@@ -122,15 +122,15 @@ return {
 						-- LSP
 						"lua_ls", -- lua LSP
 						"texlab", -- latex LSP
-						"pyright", -- python LSP
+						-- "pyright", -- python LSP
 						-- linter
-						"ruff", -- python linter
-						"ltex", -- LSP for text, markdown, latex
+						-- "ruff", -- python linter
+						-- "ltex", -- LSP for text, markdown, latex
 					}
 				else
 					Ensure_installed = {
 						"lua_ls", -- lua
-						"pyright", -- python
+						-- "pyright", -- python
 					}
 				end
 				binaryformat = nil

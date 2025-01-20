@@ -37,7 +37,7 @@ return {
 			"luap",
 			"markdown",
 			"markdown_inline",
-			"python",
+			-- "python",
 			"regex",
 			"vim",
 			"vimdoc",
