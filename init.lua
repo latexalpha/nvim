@@ -149,5 +149,5 @@ require("lazy").setup({
 	},
 })
 
--- vim.cmd.colorscheme("catppuccin") -- colorscheme
-vim.cmd.colorscheme("kanagawa") -- colorscheme
+vim.cmd.colorscheme("catppuccin") -- colorscheme
+-- vim.cmd.colorscheme("kanagawa") -- colorscheme
