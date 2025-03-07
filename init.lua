@@ -95,6 +95,7 @@ elseif binaryformat == "so" then
             let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
         elseif has("nvim") && !empty($VIRTUAL_ENV)
             let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
+        end
     ]])
 end
 binaryformat = nil
