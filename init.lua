@@ -1,77 +1,109 @@
+---- NEOVIM CORE CONFIGURATION
+-- Author: heihi
+-- Last Update: April 2025
+--
+-- This is the main Neovim configuration file that loads at startup.
+-- It handles basic settings, keymaps, and initializes the plugin manager.
+
+------------------------
+-- GLOBAL VARIABLES  --
+------------------------
 local g = vim.g
 
--- set `mapleader` before lazy so mappings are correct
-g.mapleader = " "
-g.maplocalleader = " "
+-- Leader key configuration (set before plugins load)
+g.mapleader = " " -- Space as the leader key
+g.maplocalleader = " " -- Space as the local leader key
 
--- disable netrw at the very start of init.lua
-g.loaded_netrw = 1
+-- Disable built-in plugins for better performance
+g.loaded_netrw = 1 -- Disable built-in file explorer
 g.loaded_netrwPlugin = 1
+g.loaded_ruby_provider = 0 -- Disable Ruby support
+g.loaded_perl_provider = 0 -- Disable Perl support
+g.loaded_node_provider = 0 -- Disable NodeJS support
 
-g.loaded_ruby_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_node_provider = 0
-
--- vim.o.cmdheight = 0 -- hide cmd line when inactive
-
--- keymap settings
+------------------------
+-- KEYMAPPINGS        --
+------------------------
 local map = vim.keymap.set
 
-map({ "n", "i", "x" }, "jk", "<ESC>")
-map("t", "jk", "C-\\><C-n>")
-map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected texts down. " })
-map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected texts up. " })
-map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer " })
-map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer. " })
-map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit " })
-map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "NO highlight " })
-map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Checkhealth" })
--- keymaps for diagnostics
-map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in a floating window. " })
-map(
-	"n",
-	"<leader>dp",
-	vim.diagnostic.get_prev,
-	{ desc = "Get the previous diagnostic closest to the cursor position. " }
-)
-map("n", "<leader>dn", vim.diagnostic.get_next, { desc = "Get the next diagnostic closest to the cursor position. " })
--- map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "Add buffer diagnostics to the location list. " })
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
-	end,
-})
+-- Essential keymaps
+map({ "n", "i", "x" }, "jk", "<ESC>", { desc = "Exit to normal mode" })
+map("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" }) -- Fixed syntax error here
 
--- option settings
+-- Text manipulation
+map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected text down" })
+map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected text up" })
+
+-- Buffer operations
+map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer" })
+map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer" })
+map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit" })
+map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "Clear search highlighting" })
+map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Run health check" })
+
+-- Diagnostics navigation
+map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in floating window" })
+map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" }) -- Fixed function name
+map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" }) -- Fixed function name
+
+-- -- LSP keymappings (applied when LSP attaches to buffer)
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--     callback = function(args)
+--         map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename symbol" })
+--     end,
+-- })
+
+------------------------
+-- EDITOR OPTIONS     --
+------------------------
 local opt = vim.opt
-opt.clipboard = "unnamedplus" -- clipboard
-opt.number = true -- show line number
-opt.relativenumber = true -- relative line number
-opt.tabstop = 4 -- indent
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.autoindent = true
-opt.wrap = true -- wrap
-opt.cursorline = true -- cursor
-opt.mouse:append("a") -- mouse
-opt.splitright = true -- new window location
-opt.splitbelow = true
-opt.ignorecase = true -- search
-opt.smartcase = true
-opt.termguicolors = true -- true colors
-opt.signcolumn = "yes"
-opt.list = true -- lists
-opt.listchars:append("space:⋅")
-opt.listchars:append("eol:↴")
 
--- OS specific settings
+-- Clipboard settings
+opt.clipboard = "unnamedplus" -- Use system clipboard
+
+-- Line numbers
+opt.number = true -- Show line numbers
+opt.relativenumber = true -- Show relative line numbers
+
+-- Indentation settings
+opt.tabstop = 4 -- Width of tab character
+opt.softtabstop = 4 -- Number of spaces for tab in editing operations
+opt.shiftwidth = 4 -- Number of spaces for each indent
+opt.expandtab = true -- Convert tabs to spaces
+opt.autoindent = true -- Copy indent from current line when starting new line
+
+-- Display settings
+opt.wrap = true -- Wrap long lines
+opt.cursorline = true -- Highlight current line
+opt.mouse:append("a") -- Enable mouse in all modes
+opt.termguicolors = true -- Enable true color support
+opt.signcolumn = "yes" -- Always show sign column
+
+-- Split window behavior
+opt.splitright = true -- Open vertical splits to the right
+opt.splitbelow = true -- Open horizontal splits below
+
+-- Search settings
+opt.ignorecase = true -- Case-insensitive search
+opt.smartcase = true -- Case-sensitive when uppercase present
+
+-- Whitespace visualization
+opt.list = true -- Show invisible characters
+opt.listchars:append("space:⋅") -- Show spaces as middle dots
+opt.listchars:append("eol:↴") -- Show end of line as down-right arrow
+
+------------------------
+-- OS-SPECIFIC CONFIG --
+------------------------
 local binaryformat = package.cpath:match("%p[\\|/]?%p(%a+)")
+
 if binaryformat == "dll" then
-	-- set global python3 for windows:
-	-- firstly conda base python,
-	-- secondly conda virtual environment python
-	-- lastly, uv virtual environment python
+	-- Windows-specific configuration
+
+	-- Python host configuration (priority order):
+	-- 1. Conda environment (if active)
+	-- 2. Virtual environment (if active)
+	-- 3. Fallback to global installation
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "\\python.exe"
@@ -79,28 +111,36 @@ if binaryformat == "dll" then
             let g:python3_host_prog = $VIRTUAL_ENV. "\\Scripts\\python.exe"
         else
             let g:python3_host_prog = "C:\\ZSY_apps\\global_python3_host\\.venv\\Scripts\\python.exe"
-        end
+        endif
     ]])
+
 	-- VimTeX settings for Windows
-	g.tex_flavor = "latex"
-	g.vimtex_compiler_method = "latexmk"
-	g.vimtex_indent_bib_enabled = true
-	g.vimtex_format_enabled = false
-	g.vimtex_view_general_viewer = "SumatraPDF"
-	g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+	g.tex_flavor = "latex" -- Default TeX flavor
+	g.vimtex_compiler_method = "latexmk" -- Compiler method
+	g.vimtex_indent_bib_enabled = true -- Enable BibTeX indentation
+	g.vimtex_format_enabled = false -- Disable auto-formatting
+	g.vimtex_view_general_viewer = "SumatraPDF" -- PDF viewer
+	g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf" -- SumatraPDF options
 elseif binaryformat == "so" then
-	g.python3_host_prog = "/usr/bin/python3" -- set the Nvim python virtual environment
+	-- Linux/macOS configuration
+	g.python3_host_prog = "/usr/bin/python3" -- Default Python path
+
+	-- Override with environment Python if available
 	vim.cmd([[
         if has("nvim") && !empty($CONDA_PREFIX)
             let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
         elseif has("nvim") && !empty($VIRTUAL_ENV)
             let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
-        end
+        endif
     ]])
 end
-binaryformat = nil
 
--- bootstrap lazy.nvim
+binaryformat = nil -- Clean up the variable
+
+------------------------
+-- PLUGIN MANAGEMENT --
+------------------------
+-- Bootstrap lazy.nvim (auto-install if not present)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -113,42 +153,57 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Initialize lazy.nvim with configuration
 require("lazy").setup({
-	spec = { -- importing directories
-		{ import = "plugins.basis" },
-		{ import = "plugins.coding" },
-		{ import = "plugins.ui" },
+	-- Plugin specification directories
+	spec = {
+		{ import = "plugins.basis" }, -- Core plugins
+		{ import = "plugins.ui" }, -- UI plugins
 	},
+
+	-- Package manager configuration
 	pkg = {
 		enabled = true,
 		cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
-		versions = true, -- Honor versions in pkg sources
-		-- the first package source that is found for a plugin will be used.
+		versions = true, -- Honor versions in package sources
+		-- Plugin source priority (first match is used)
 		sources = {
 			"lazy",
 			"rockspec",
 			"packspec",
 		},
 	},
+
+	-- Neorocks configuration
 	rocks = {
 		root = vim.fn.stdpath("data") .. "/lazy-rocks",
 		server = "https://nvim-neorocks.github.io/rocks-binaries/",
 	},
-	ui = { -- ui config
+
+	-- UI configuration
+	ui = {
 		border = "double",
 		size = {
 			width = 0.8,
 			height = 0.8,
 		},
 	},
-	checker = { -- check updates
-		enabled = true,
-		notify = false,
+
+	-- Update checker
+	checker = {
+		enabled = true, -- Enable update checking
+		notify = false, -- Don't show notifications
 	},
+
+	-- Change detection
 	change_detection = {
-		notify = false,
+		notify = false, -- Don't notify on config changes
 	},
 })
 
-vim.cmd.colorscheme("catppuccin") -- colorscheme
--- vim.cmd.colorscheme("kanagawa") -- colorscheme
+------------------------
+-- APPEARANCE         --
+------------------------
+vim.cmd.colorscheme("catppuccin") -- Set colorscheme
+-- vim.cmd.colorscheme("kanagawa")  -- Alternative colorscheme (commented out)
