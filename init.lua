@@ -41,18 +41,6 @@ map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Write and quit" })
 map("n", "<leader>hl", "<cmd>noh<CR>", { desc = "Clear search highlighting" })
 map("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Run health check" })
 
--- Diagnostics navigation
-map("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show diagnostics in floating window" })
-map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" }) -- Fixed function name
-map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" }) -- Fixed function name
-
--- -- LSP keymappings (applied when LSP attaches to buffer)
--- vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(args)
---         map("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename symbol" })
---     end,
--- })
-
 ------------------------
 -- EDITOR OPTIONS     --
 ------------------------
