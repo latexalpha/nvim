@@ -79,6 +79,7 @@ opt.smartcase = true -- Case-sensitive when uppercase present
 opt.list = true -- Show invisible characters
 opt.listchars:append("space:⋅") -- Show spaces as middle dots
 opt.listchars:append("eol:↴") -- Show end of line as down-right arrow
+vim.opt.termguicolors = true -- Enable true color support for proper highlighting
 
 ------------------------
 -- OS-SPECIFIC CONFIG --
@@ -102,13 +103,6 @@ if binaryformat == "dll" then
         endif
     ]])
 
-	-- VimTeX settings for Windows
-	g.tex_flavor = "latex" -- Default TeX flavor
-	g.vimtex_compiler_method = "latexmk" -- Compiler method
-	g.vimtex_indent_bib_enabled = true -- Enable BibTeX indentation
-	g.vimtex_format_enabled = false -- Disable auto-formatting
-	g.vimtex_view_general_viewer = "SumatraPDF" -- PDF viewer
-	g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf" -- SumatraPDF options
 elseif binaryformat == "so" then
 	-- Linux/macOS configuration
 	g.python3_host_prog = "/usr/bin/python3" -- Default Python path
@@ -189,9 +183,3 @@ require("lazy").setup({
 		notify = false, -- Don't notify on config changes
 	},
 })
-
-------------------------
--- APPEARANCE         --
-------------------------
-vim.cmd.colorscheme("catppuccin") -- Set colorscheme
--- vim.cmd.colorscheme("kanagawa")  -- Alternative colorscheme (commented out)

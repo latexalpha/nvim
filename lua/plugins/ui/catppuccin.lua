@@ -105,10 +105,5 @@ return {
 
 		-- Apply the colorscheme
 		vim.cmd.colorscheme("catppuccin")
-
-		-- Set terminal colors to match theme
-		-- vim.g.terminal_color_0 = "#45475a"  -- black
-		-- vim.g.terminal_color_1 = "#f38ba8"  -- red
-		-- ...etc for other colors if needed
 	end,
 }

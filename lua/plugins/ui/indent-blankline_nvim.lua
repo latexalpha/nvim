@@ -2,11 +2,6 @@
 -- FUNCTIONALITY: Adds indentation guides to all lines
 -- FEATURES: Rainbow indentation with scope highlighting
 
--- Set visualization options for whitespace characters
--- vim.opt.list = true              -- Uncomment to enable whitespace visualization globally
-vim.opt.listchars:append("space:⋅") -- Show spaces as middle dots
-vim.opt.listchars:append("eol:↴") -- Show end-of-line as down-right arrow
-vim.opt.termguicolors = true -- Enable true color support for proper highlighting
 
 return {
 	"lukas-reineke/indent-blankline.nvim",
