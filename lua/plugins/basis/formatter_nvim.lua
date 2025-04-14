@@ -2,10 +2,7 @@
 -- FUNCTIONALITY: Code formatting for various languages
 --
 -- PREREQUISITES:
--- - Required formatters must be installed via Mason:
---   - stylua (Lua)
---   - prettier (Markdown)
---   - (ruff for Python if uncommented)
+-- - Formatters are automatically installed via Mason
 --
 -- USAGE:
 -- - Manual: Use :Format to format current buffer
@@ -39,27 +36,12 @@ return {
 				-- Lua files: use stylua formatter
 				lua = {
 					require("formatter.filetypes.lua").stylua,
-					-- Function to configure stylua with custom options (uncomment to use):
-					-- function()
-					--     return {
-					--         exe = "stylua",
-					--         args = {
-					--             "--search-parent-directories",
-					--             "--stdin-filepath", vim.api.nvim_buf_get_name(0),
-					--             "--", "-"
-					--         },
-					--         stdin = true,
-					--     }
-					-- end
 				},
 
-				-- Python files: use ruff formatter (uncomment to enable)
-				-- python = {
-				--     require("formatter.filetypes.python").ruff,
-				--     -- Other Python formatters available:
-				--     -- require("formatter.filetypes.python").black,
-				--     -- require("formatter.filetypes.python").yapf,
-				-- },
+				-- Python files: use ruff formatter
+				python = {
+					require("formatter.filetypes.python").ruff,
+				},
 
 				-- Markdown files: use prettier formatter
 				markdown = {
@@ -68,15 +50,9 @@ return {
 			},
 
 			-- Fallback formatter for any filetype not configured above (optional)
-			-- ["*"] = {
-			--     require("formatter.filetypes.any").remove_trailing_whitespace,
-			-- },
+			["*"] = {
+				require("formatter.filetypes.any").remove_trailing_whitespace,
+			},
 		})
 	end,
-
-	-- Optional dependencies if you want formatters to be auto-installed
-	-- dependencies = {
-	--     "williamboman/mason.nvim",
-	--     "williamboman/mason-lspconfig.nvim",
-	-- },
 }

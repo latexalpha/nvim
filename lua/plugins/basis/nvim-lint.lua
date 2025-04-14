@@ -15,7 +15,7 @@ return {
 		lint.linters_by_ft = {
 			lua = { "luacheck" }, -- Lua static analyzer
 			markdown = { "markdownlint" }, -- Markdown style checker
-			-- python = { "ruff" },       -- Fast Python linter (uncomment to enable)
+			python = { "ruff" },       -- Fast Python linter (uncomment to enable)
 		}
 
 		-- Custom linter configurations for Neovim development
@@ -303,24 +303,4 @@ return {
 			vim.diagnostic.setloclist({ open = true })
 		end, { desc = "List buffer diagnostics in loclist" })
 	end,
-
-	-- Add Mason dependencies for automatic linter installation
-	dependencies = {
-		"williamboman/mason.nvim",
-		{
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			config = function()
-				require("mason-tool-installer").setup({
-					-- Automatically install these linters
-					ensure_installed = {
-						"luacheck", -- Lua linter
-						"markdownlint", -- Markdown linter
-						-- "ruff",       -- Python linter (uncomment to enable)
-					},
-					auto_update = true, -- Keep tools updated
-					run_on_start = true, -- Install/update tools when Neovim starts
-				})
-			end,
-		},
-	},
 }

@@ -48,10 +48,10 @@ return {
 		end
 
 		-- Python LSP keymappings (extends common keymappings)
-		-- local python_on_attach = function(client, bufnr)
-		-- 	common_on_attach(client, bufnr)
-		-- 	-- Add Python-specific keymappings here if needed
-		-- end
+		local python_on_attach = function(client, bufnr)
+			common_on_attach(client, bufnr)
+			-- Add Python-specific keymappings here if needed
+		end
 
 		-- LaTeX LSP keymappings
 		-- Focused on formatting functionality
@@ -61,6 +61,20 @@ return {
 				vim.lsp.buf.format({ async = true }) -- Format LaTeX document
 			end, bufopts)
 		end
+
+		-- Python language server configuration
+		vim.lsp.config("pyright", {
+			on_attach = python_on_attach, -- apply Python-specific keymaps
+			settings = {
+				python = {
+					analysis = {
+						typeCheckingMode = "basic", -- Set type checking mode to basic
+						autoImportCompletions = true, -- Enable auto-import completions
+					},
+				},
+			},
+		})
+		vim.lsp.enable("pyright") -- Enable the Python language server
 
 		-- Lua language server configuration
 		vim.lsp.config("lua_ls", {
@@ -133,13 +147,21 @@ return {
 						-- Language Servers
 						"lua_ls", -- Lua language server
 						"texlab", -- LaTeX language server
-						-- "pyright", -- Python language server (commented out)
+						"pyright", -- Python language server (commented out)
+						-- Linters
+						"ruff_lsp", -- Python linter
+						"markdownlint", -- Markdown linter
+						-- Formatters
+						"prettier", -- JavaScript/TypeScript formatter
+						"stylua", -- Lua formatter
+						"latexindent", -- LaTeX formatter
+						"ltex", -- LanguageTool for grammar checking
 					}
 				else
 					-- Unix-like systems (Linux/macOS)
 					Ensure_installed = {
 						"lua_ls", -- Lua language server
-						-- "pyright", -- Python language server (commented out)
+						"pyright", -- Python language server (commented out)
 					}
 				end
 				binaryformat = nil -- Clean up variable after use
