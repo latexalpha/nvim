@@ -22,8 +22,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" }, -- Load when opening files (for performance)
 	config = function()
-		local lspconfig = require("lspconfig")
-
 		-- Python LSP keymappings
 		-- Only applied after LSP attaches to the current buffer
 		local common_on_attach = function(_, bufnr)
@@ -50,10 +48,10 @@ return {
 		end
 
 		-- Python LSP keymappings (extends common keymappings)
-		local python_on_attach = function(client, bufnr)
-			common_on_attach(client, bufnr)
-			-- Add Python-specific keymappings here if needed
-		end
+		-- local python_on_attach = function(client, bufnr)
+		-- 	common_on_attach(client, bufnr)
+		-- 	-- Add Python-specific keymappings here if needed
+		-- end
 
 		-- LaTeX LSP keymappings
 		-- Focused on formatting functionality

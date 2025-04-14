@@ -40,7 +40,7 @@ return {
 
 			-- Enable floating window diagnostics on cursor hold
 			float = {
-				source = "always", -- Always show source
+				source = true, -- Always show source
 				border = "rounded", -- Add border to float window
 				header = "", -- No header
 				prefix = "▶ ", -- Add bullet point prefix to each diagnostic Left bar prefix (or use "●", "■", ", etc.)
@@ -85,19 +85,29 @@ return {
 			vim.diagnostic.open_float()
 		end, { desc = "Show diagnostics under cursor" })
 
-		-- Diagnostic navigation keymaps
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+		-- Diagnostic navigation keymaps (updated for newer Neovim API)
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.jump_prev({ float = { border = "rounded" } })
+		end, { desc = "Go to previous diagnostic" })
 
-		-- Additional diagnostic navigation by severity
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.jump_next({ float = { border = "rounded" } })
+		end, { desc = "Go to next diagnostic" })
+
+		-- Additional diagnostic navigation by severity (updated)
 		vim.keymap.set("n", "[e", function()
-			vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+			vim.diagnostic.jump_prev({
+				severity = vim.diagnostic.severity.ERROR,
+				float = { border = "rounded" },
+			})
 		end, { desc = "Go to previous error" })
 
 		vim.keymap.set("n", "]e", function()
-			vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+			vim.diagnostic.jump_next({
+				severity = vim.diagnostic.severity.ERROR,
+				float = { border = "rounded" },
+			})
 		end, { desc = "Go to next error" })
-
 		-- List all diagnostics in quickfix window
 		vim.keymap.set("n", "<leader>lq", vim.diagnostic.setqflist, { desc = "List all diagnostics in quickfix" })
 
