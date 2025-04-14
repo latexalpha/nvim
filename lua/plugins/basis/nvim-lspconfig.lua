@@ -148,13 +148,7 @@ return {
 						"lua_ls", -- Lua language server
 						"texlab", -- LaTeX language server
 						"pyright", -- Python language server (commented out)
-						-- Linters
-						"ruff_lsp", -- Python linter
-						"markdownlint", -- Markdown linter
 						-- Formatters
-						"prettier", -- JavaScript/TypeScript formatter
-						"stylua", -- Lua formatter
-						"latexindent", -- LaTeX formatter
 						"ltex", -- LanguageTool for grammar checking
 					}
 				else
