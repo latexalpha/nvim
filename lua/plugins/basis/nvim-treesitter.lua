@@ -127,7 +127,7 @@ return {
 
 	config = function(_, opts)
 		-- Set compiler preference for parsing (important on Windows)
-		require("nvim-treesitter.install").compilers = { "gcc", "g++" }
+		require("nvim-treesitter.install").compilers = { "clang" }
 
 		-- Apply configuration
 		require("nvim-treesitter.configs").setup(opts)
