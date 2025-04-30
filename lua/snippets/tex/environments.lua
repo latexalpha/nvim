@@ -66,7 +66,7 @@ return {
 		},
 		fmta(
 			[[
-                \begin{figure}[htb]
+                \begin{figure}[!htb]
                     \centering
                     \includegraphics[width=<>\textwidth]{./figures/<>}
                     % \caption{<>}
@@ -88,10 +88,15 @@ return {
 		},
 		fmta(
 			[[
-                \begin{table}[htb]
+                \begin{table}[!htb]
                     \caption{<>}
                     \centering
+                    \begin{tabularx}{\linewidth}{X X}
+                    \toprule
                     <>
+                    \midrule
+                    \bottomrule
+                    \end{tabularx}
                     % \label{table: <>}
                 \end{table}
             ]],
