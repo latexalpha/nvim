@@ -55,7 +55,7 @@ return {
 
 		-- LaTeX LSP keymappings
 		-- Focused on formatting functionality
-		local latex_on_attach = function(_, bufnr)
+		local texlab_on_attach = function(_, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			vim.keymap.set("n", "<leader>ft", function()
 				vim.lsp.buf.format({ async = true }) -- Format LaTeX document
@@ -91,10 +91,24 @@ return {
 
 		-- LTeX language server for grammar/spell checking (markdown, text, LaTeX)
 		vim.lsp.config("ltex", {
-			on_attach = common_on_attach, -- Apply common keymaps
+			on_attach = function(client, bufnr)
+				-- Ensure codeActionProvider is enabled
+				client.server_capabilities.codeActionProvider = true
+		
+				-- Set up ltex_extra
+				require("ltex_extra").setup({
+					language = "en-US",
+					path = vim.fn.getcwd() .. "/.vscode/ltex.json", -- Path to custom dictionary
+				})
+		
+				-- Apply common keymaps
+				local bufopts = { noremap = true, silent = true, buffer = bufnr }
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts) -- Fix code actions
+			end,
 			settings = {
 				ltex = {
 					language = "en-US", -- Set default language for grammar checking
+					dictionary = {}, -- Custom dictionary (empty by default)
 					diagnosticSeverity = "information", -- Show grammar errors as information
 				},
 			},
@@ -103,7 +117,7 @@ return {
 
 		-- TeX/LaTeX language server with formatting capabilities
 		vim.lsp.config("texlab", {
-			on_attach = latex_on_attach, -- Apply LaTeX-specific keymaps
+			on_attach = texlab_on_attach, -- Apply LaTeX-specific keymaps
 			settings = {},
 		})
 		vim.lsp.enable("texlab")
@@ -166,5 +180,8 @@ return {
 				})
 			end,
 		},
+		{
+			"barreiroleo/ltex_extra.nvim", -- LTeX language server for grammar checking
+		}
 	},
 }

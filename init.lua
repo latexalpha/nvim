@@ -79,7 +79,11 @@ opt.smartcase = true -- Case-sensitive when uppercase present
 opt.list = true -- Show invisible characters
 opt.listchars:append("space:⋅") -- Show spaces as middle dots
 opt.listchars:append("eol:↴") -- Show end of line as down-right arrow
-vim.opt.termguicolors = true -- Enable true color support for proper highlighting
+opt.termguicolors = true -- Enable true color support for proper highlighting
+
+-- -- Spellfile
+-- vim.opt.spellfile = vim.fn.expand("%:p:h") .. "/en.utf-8.add"
+-- vim.spell = true
 
 ------------------------
 -- OS-SPECIFIC CONFIG --
@@ -102,7 +106,6 @@ if binaryformat == "dll" then
             let g:python3_host_prog = "C:\\ZSY_apps\\global_python3_host\\.venv\\Scripts\\python.exe"
         endif
     ]])
-
 elseif binaryformat == "so" then
 	-- Linux/macOS configuration
 	g.python3_host_prog = "/usr/bin/python3" -- Default Python path
