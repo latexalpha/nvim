@@ -82,7 +82,10 @@ return {
 			settings = {
 				Lua = {
 					diagnostics = {
-						globals = { "vim" }, -- Recognize 'vim' as a global variable in Neovim configs
+						globals = {
+							"vim",
+							"require",
+						}, -- Recognize 'vim' as a global variable in Neovim configs
 					},
 				},
 			},
@@ -94,13 +97,13 @@ return {
 			on_attach = function(client, bufnr)
 				-- Ensure codeActionProvider is enabled
 				client.server_capabilities.codeActionProvider = true
-		
+
 				-- Set up ltex_extra
 				require("ltex_extra").setup({
 					language = "en-US",
 					path = vim.fn.getcwd() .. "/.vscode/ltex.json", -- Path to custom dictionary
 				})
-		
+
 				-- Apply common keymaps
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts) -- Fix code actions
@@ -125,7 +128,7 @@ return {
 
 	dependencies = {
 		{
-			"williamboman/mason.nvim", -- Package Manager for LSP servers, DAP, linters, and formatters
+			"mason-org/mason.nvim", -- Package Manager for LSP servers, DAP, linters, and formatters
 			build = ":MasonUpdate", -- Update registry contents when Mason is updated
 			cmd = {
 				"Mason", -- Open Mason UI
@@ -139,16 +142,16 @@ return {
 						check_outdated_packages_on_open = false, -- Don't check for updates automatically
 						border = "single", -- UI border style
 						icons = {
-							package_pending = " ", -- Package is being installed
-							package_installed = " ", -- Package is installed
-							package_uninstalled = " ", -- Package is not installed
+							package_installed = "✓", -- Package is installed
+							package_pending = "➜", -- Package is being installed
+							package_uninstalled = "✗", -- Package is not installed
 						},
 					},
 				})
 			end,
 		},
 		{
-			"williamboman/mason-lspconfig.nvim", -- Bridge between Mason and nvim-lspconfig
+			"mason-org/mason-lspconfig.nvim", -- Bridge between Mason and nvim-lspconfig
 			config = function()
 				local mason_lspconfig = require("mason-lspconfig")
 
@@ -177,11 +180,15 @@ return {
 				-- Configure which servers Mason should automatically install
 				mason_lspconfig.setup({
 					ensure_installed = Ensure_installed,
+					automatic_enable = false,
+					-- automatic_enable = {
+					-- "lua_ls",
+					-- },
 				})
 			end,
 		},
 		{
 			"barreiroleo/ltex_extra.nvim", -- LTeX language server for grammar checking
-		}
+		},
 	},
 }
