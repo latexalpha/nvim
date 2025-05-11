@@ -108,16 +108,16 @@ if binaryformat == "dll" then
     ]])
 elseif binaryformat == "so" then
 	-- Linux/macOS configuration
-	g.python3_host_prog = "/usr/bin/python3" -- Default Python path
+	g.python3_host_prog = "~/python_venv/.venv/bin/python3" -- Default Python venv path
 
 	-- Override with environment Python if available
-	vim.cmd([[
-        if has("nvim") && !empty($CONDA_PREFIX)
-            let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
-        elseif has("nvim") && !empty($VIRTUAL_ENV)
-            let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
-        endif
-    ]])
+	-- vim.cmd([[
+	--        if has("nvim") && !empty($CONDA_PREFIX)
+	--            let g:python3_host_prog = $CONDA_PREFIX . "/bin/python"
+	--        elseif has("nvim") && !empty($VIRTUAL_ENV)
+	--            let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
+	--        endif
+	--    ]])
 end
 
 binaryformat = nil -- Clean up the variable
