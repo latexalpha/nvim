@@ -34,6 +34,15 @@ map("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" }) -- Fixed syntax e
 map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected text down" })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected text up" })
 
+-- Split window operations
+map("n", "<leader>sh", "<cmd>sp<CR>", { desc = "Horizontal split" })
+map("n", "<leader>sv", "<cmd>vsp<CR>", { desc = "Vertical split" })
+
+-- Terminal
+map("n", "<Leader>t", ":terminal<CR>", { desc = "Open Terminal" })
+map("n", "<Leader>tv", ":vsplit | terminal<CR>", { desc = "Vertical Split Terminal" })
+map("n", "<Leader>th", ":split | terminal<CR>", { desc = "Horizontal Split Terminal" })
+
 -- Buffer operations
 map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit buffer" })
 map("n", "<leader>wt", "<CMD>w<CR>", { desc = "Write buffer" })
@@ -106,6 +115,14 @@ if binaryformat == "dll" then
             let g:python3_host_prog = "C:\\ZSY_apps\\global_python3_host\\.venv\\Scripts\\python.exe"
         endif
     ]])
+	-- Configure for PowerShell on Windows
+	vim.o.shell = "pwsh.exe"
+	vim.o.shellcmdflag =
+		"-NoLogo -NoProfile -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+	vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+	vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+	vim.o.shellquote = ""
+	vim.o.shellxquote = ""
 elseif binaryformat == "so" then
 	-- Linux/macOS configuration
 	g.python3_host_prog = "~/python_venv/.venv/bin/python3" -- Default Python venv path
@@ -118,6 +135,13 @@ elseif binaryformat == "so" then
 	--            let g:python3_host_prog = $VIRTUAL_ENV . "/bin/python"
 	--        endif
 	--    ]])
+	-- Configure for Bash on Linux (often the default, but good to be explicit)
+	vim.o.shell = "bash"
+	vim.o.shellcmdflag = "-c"
+	vim.o.shellredir = "2>&1 > %s"
+	vim.o.shellpipe = "2>&1 | tee %s"
+	vim.o.shellquote = "'"
+	vim.o.shellxquote = ""
 end
 
 binaryformat = nil -- Clean up the variable
